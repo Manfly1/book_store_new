@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{charset: "UTF-8"}
+    %meta{name: "viewport", content: "width=device-width"}
+    %title= yield(:title) + 'Bookstore'
+    %link{href: "https://fonts.googleapis.com/css?family=Open+Sans", rel: "stylesheet"}
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    - if notice
+      %p.alert.alert-success= notice
+    - if alert
+      %p.alert.alert-danger= alert
+
+    = render partial: 'shared/header', cached: true                
+
+    = yield
+
+    = render partial: 'shared/footer', cached: true 
+

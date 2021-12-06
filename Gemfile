@@ -15,6 +15,7 @@ gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'country_select', '~> 4.0'
 gem 'devise'
+gem "rails_12factor", group: :production
 gem 'draper', '~> 3.1'
 gem 'ffaker', '~> 2.11'
 gem 'font-awesome-rails', '~> 4.7.0.5'
