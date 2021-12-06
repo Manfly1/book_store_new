@@ -5,12 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: bookstore_development
+  database: bookstore_new_development
 
 test:
   <<: *default
-  database: bookstore_test
+  database: bookstore_new_test
 
 production:
   <<: *default
-  database: bookstore_production
+  database: bookstore_new_production
