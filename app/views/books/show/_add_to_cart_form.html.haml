@@ -1,0 +1,13 @@
+= form_with(url: order_order_items_path(current_order), method: :post, local: true) do |f|
+  = f.hidden_field :book_id, value: @book.id
+  = f.hidden_field :order_id, value: current_order.id
+  .col-xs-5.col-md-3
+    .input-group.general-position
+      %a.input-link
+        %i.fa.fa-minus.line-height-40{ onclick: "decrementQuantity(#{@book.price});" }
+      = f.text_field :quantity, value: '1', class: 'form-control quantity-input', id: 'quantity_input'
+      %a.input-link
+        %i.fa.fa-plus.line-height-40{ onclick: "incrementQuantity(#{@book.price});" }
+
+  .col-xs-7.col-md-5
+    = f.submit t('book.add_to_cart'), class: 'btn btn-default pull-right general-position add-to-cart', onclick: "addToCart()"

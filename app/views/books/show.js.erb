@@ -1,0 +1,6 @@
+if (document.getElementById('description')){
+  $("#description").replaceWith("<%=j render(partial: 'books/show/short_description') %>");
+}
+else {
+  $("#short_description").replaceWith("<%=j render(partial: 'books/show/description') %>");
+}

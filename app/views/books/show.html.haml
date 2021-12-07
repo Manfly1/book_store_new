@@ -1,0 +1,34 @@
+= content_for(:title, @book.title + ' | ')
+
+%main.container
+  = link_to @back, class: 'general-back-link' do
+    %i.fa.fa-long-arrow-left.mr-15
+    = t('book.back_to')
+
+  .row
+    .col-sm-6
+      .product-gallery
+        - if @book.images.any?
+          = render partial: 'books/show/images'
+        - else
+          = image_tag('no_cover.jpg', class: 'img-shadow general-thumbnail-img')
+
+    .col-sm-6
+      %h1.mt-res-0= @book.title
+      %p.lead.small
+        = @book.authors_names
+
+      .row
+        .col-xs-12.col-md-4
+          %p.h1.in-gold-500.mt-10#price= number_to_currency(@book.price)
+
+        = render partial: 'books/show/add_to_cart_form'
+
+      = render partial: 'books/show/book_info'
+
+  .mb-80
+    - if user_signed_in?
+      = render partial: 'books/show/write_review'
+
+  .mb-80
+    = render partial: 'books/show/reviews'

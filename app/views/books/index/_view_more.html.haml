@@ -1,0 +1,2 @@
+- unless @books.last_page?
+  = link_to_next_page(@books, t('shop.more'), remote: true, class: 'button btn btn-primary')

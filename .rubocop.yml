@@ -1,29 +1,67 @@
-require: rubocop-rspec
+require: 
+  - rubocop-rspec
 
-Metrics/LineLength:
-  Max: 120
+AllCops:
+  Exclude:
+    - 'db/*'
+    - 'script/*'
+    - 'bin/*'
+    - 'node_modules/**/*'
 
 Metrics/MethodLength:
-  Max: 16
+  Max: 15
+  Exclude:
+    - 'db/**/*.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Gemfile'
+    - 'spec/**/*.rb'
+    - config/initializers/*
+    - config/environments/*
+
+Metrics/LineLength:
+  Max: 145
+  Exclude:
+    - config/initializers/*
 
 Style/Documentation:
   Enabled: false
 
+Style/Semicolon:
+  Enabled: false  
+
+Style/MixinUsage:  
+  Enabled: false  
+
 Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/features/**/*
+    - spec/views/**/*
+
+RSpec/MessageChain:
   Enabled: false
 
-Metrics/ParameterLists:
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/MultipleExpectations:
   Max: 10
 
-Metrics/BlockLength:
-  Max: 40
-  ExcludedMethods: ['describe']
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
 
 RSpec/ExampleLength:
-  Max: 25
-
-Metrics/AbcSize:
-  Max: 30
+  Max: 10
 
 RSpec/MessageSpies:
   Enabled: false

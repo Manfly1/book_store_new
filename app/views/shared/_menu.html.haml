@@ -1,0 +1,33 @@
+%ul.nav.navbar-nav
+  %li
+    %a{href: root_path}= t('default.home')
+  %li.dropdown
+    %a.dropdown-toggle{href: "", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+      = t('default.shop')
+    %ul.dropdown-menu
+      %li
+        %a{href: books_path}= t('shop.all')
+      %li.divider{role: "separator"}
+      - Category.all.each do |category|
+        %li
+          %a{href: books_path(category: category.id)}= category.name
+
+  - if user_signed_in?
+    %li.dropdown
+      %a.dropdown-toggle{href: "", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
+        = current_user.name
+      %ul.dropdown-menu
+        %li
+          %a{href: orders_path}= t('default.orders')
+        %li
+          %a{href: edit_user_path(current_user)}= t('default.settings')
+        %li.divider{role: "separator"}
+        %li
+          = link_to t('default.logout'), destroy_user_session_path, method: :delete
+    
+
+  - else
+    %li
+      %a{href: new_user_session_path}= t('default.login')
+    %li
+      %a{href: new_user_registration_path}= t('default.register')

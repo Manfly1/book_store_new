@@ -1,0 +1,22 @@
+-@books.each do |book|
+  .col-xs-6.col-sm-3
+    .general-thumb-wrap
+      .thumbnail.general-thumbnail
+        - if book.images.any?
+          = image_tag(book.cover, class: 'img-shadow general-thumbnail-img')
+        - else
+          = image_tag('no_cover.jpg', class: 'img-shadow general-thumbnail-img')
+        .thumb-hover
+          .general-thumb-link-wrap
+            %a.thumb-hover-link{href: book_path(book)}
+              %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+
+            = link_to order_order_items_path(current_order, book_id: book, quantity: 1), method: :post, class: 'thumb-hover-link add-to-cart', onclick: "addToCart()" do
+              %i.fa.fa-shopping-cart.thumb-icon
+
+    .general-thumb-info
+      %p.title= link_to book.title, book_path(book)
+      %p.font-16.in-gold-500= number_to_currency(book.price)
+      %span.divider-sm
+      %p.lead.small
+        = book.authors_names

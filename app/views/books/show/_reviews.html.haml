@@ -1,0 +1,14 @@
+%h3.in-gold-500.mb-25= t('book.reviews', count: @reviews.count)
+- @reviews.each do |review|
+  .general-message-wrap.divider-lg
+    .clearfix
+      %img.img-circle.logo-size.inlide-block.pull-left{src: review.image}
+      .ml-70
+        %div
+          .general-message-date.hidden-xs= review.date
+          .max-240
+            .general-message-name= review.author
+        .mb-15
+          - review.rating.times do
+            %i.fa.fa-star.rate-star
+        %p= review.body

@@ -1,0 +1,6 @@
+.mb-20
+  = image_tag(@book.cover, class: 'img-responsive')
+.images.clearfix
+  - @book.images.each do |image|
+    %a.img-link
+      = image_tag(image.variant(resize: "150x150>"), class: 'img-responsive')

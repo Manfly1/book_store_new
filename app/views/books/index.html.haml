@@ -1,0 +1,21 @@
+= content_for(:title, t('shop.catalog') + ' | ')
+%main.container
+  %h1.general-title-margin= t('shop.catalog')
+  .hidden-xs.clearfix
+    = render partial: 'books/index/sorting'
+
+    = render partial: 'books/index/filter'
+
+  .dropdowns.mb-25.visible-xs
+    %p.lead.small.mb-10= t('shop.filter_by')
+    .dropdown
+      = render partial: 'books/index/mobile_filter'
+
+    %p.lead.small.mb-10= t('shop.sort_by')
+    .dropdown
+      = render partial: 'books/index/mobile_sort'
+
+  .mb-120
+    = render partial: 'books/index/books', object: @books
+    .text-center
+      = render partial: 'books/index/view_more', object: @books

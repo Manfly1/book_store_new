@@ -1,0 +1,15 @@
+%h3= t('book.write_review')
+= simple_form_for ([@book, @book.reviews.build]), class: 'row' do |f|
+  %p.general-info-text= t('book.score')
+  .mb-15
+    - Constants::STARS_COUNT.times do |index|
+      %i{class: 'fa fa-star rate-empty', id: "star_id_#{index}", onclick: "stars(#{index});", role: "button"}
+
+  .mb-40
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :book_id, value: @book.id
+    = f.hidden_field :rating, value: 1, id: 'reviewRating'
+
+    = f.input :body, label: t('book.review')
+
+    = f.submit t('book.post'), class: 'text-right btn mb-20', id: 'postReview'
