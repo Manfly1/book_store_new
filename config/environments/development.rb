@@ -35,6 +35,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.assets.js_compressor = Uglifier.new(harmony: true)
+  config.serve_static_assets = false 
 
   # config.action_mailer.raise_delivery_errors = true
 
