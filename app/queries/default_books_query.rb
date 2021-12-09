@@ -10,7 +10,6 @@ class DefaultBooksQuery
   end
 
   def call
-    Book
       .yield_self(&method(:latest_books))
       .yield_self(&method(:filter))
       .yield_self(&method(:sort))
