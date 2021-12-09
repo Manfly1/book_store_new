@@ -19,6 +19,7 @@ module Bookstore
     # the framework and any gems in your application.
     config.generators.system_tests = nil
     config.generators.test_framework :rspec
+    config.assets.enabled = true
 
     config.generators do |g|
       g.test_framework :rspec
