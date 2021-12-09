@@ -89,6 +89,12 @@ Rails.application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
+  config.assets.compile = true
+  config.assets.precompile += %w( *.css.sass )
+  config.assets.precompile += %w( *.css.scss )
+  config.assets.precompile += %w( *.js )
+  config.assets.precompile += %w( *.js.coffee )
+  config.assets.precompile += %w( *.js.coffee.erb )
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
