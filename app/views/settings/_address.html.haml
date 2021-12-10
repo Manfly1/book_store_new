@@ -1,0 +1,13 @@
+= simple_form_for(current_user, method: :put) do |form|
+  = form.simple_fields_for address, builder do |f|
+    = f.error_notification
+    = f.input :first_name, placeholder: t('settings.first_name')  
+    = f.input :last_name, placeholder: t('settings.last_name')
+    = f.input :address, placeholder: t('settings.address')
+    = f.input :city, placeholder: t('settings.city')
+    = f.input :zip, placeholder: t('settings.zip')
+    = f.input :country, placeholder: t('settings.country'), include_blank: false
+    = f.input :phone, placeholder: t('settings.phone_placeholder'), input_html: { 'data-mask': Constants::PHONE_MASK }
+
+    .text-center.general-text-align
+      = f.submit t('settings.save'), class: 'btn', id: "save-#{address}"
