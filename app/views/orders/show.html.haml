@@ -1,0 +1,87 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= @order.number
+  .row.mb-20
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('checkout.titles.address')
+      %p.general-address
+        = @billing.full_name
+        %br
+        = @billing.address
+        %br
+        = @billing.city
+        %br
+        = @billing.country
+        %br
+        = @billing.phone
+
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('checkout.titles.delivery')
+      %p.general-address
+        = @order.delivery.method
+        %br
+        = @order.delivery.days
+        %br
+        = number_to_currency(@order.delivery.price)
+
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('checkout.titles.payment')
+      %p.general-address
+        = current_user.credit_card.number
+        %br
+        = current_user.credit_card.expiration_date
+
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t('order.product')
+          %th.col-method
+          %th
+            %span.in-grey-600= t('order.price')
+          %th
+            %span.in-grey-600= t('order.quantity')
+          %th
+            %span.in-grey-600= t('order.subtotal')
+      %tbody
+        - @order.order_items.each do |order_item|
+          %tr
+            %td
+              .general-img-wrap-table
+                - if order_item.book.images.any?
+                  = image_tag(order_item.book.decorate.cover, class: 'cart-img-shadow pull-left')
+                - else
+                  = image_tag('no_cover.jpg', class: 'img-shadow general-thumbnail-img')
+            %td
+              %p.title= link_to order_item.book.title, order_item.book
+              %p.in-grey-600.fw-300= order_item.book.description
+            %td
+              %span.font-16.in-gold-500= number_to_currency(order_item.book.price)
+            %td
+              %span.ml-30= order_item.quantity
+            %td
+              %span.font-16.in-gold-500= number_to_currency(order_item.price)
+
+  .text-center.general-text-right
+    %p.in-gold-500.font-18= t('order.summary')
+    %table.general-summary-table.general-summary-table-right.general-text-right
+      %tr
+        %td
+          %p.font-16= t('order.subtotal')
+        %td
+          %p.font-16#subTotal= number_to_currency(@order.sub_price)
+      %tr
+        %td
+          %p.font-16= t('order.coupon')
+        %td
+          %p.font-16= number_to_currency(@order.discount)
+      %tr
+        %td
+          %p.font-16= t('order.delivery')
+        %td
+          %p.font-16= number_to_currency(@order.delivery_price)
+      %tr
+        %td
+          %strong.font-18= t('order.total')
+        %td
+          %strong.font-18= number_to_currency(@order.total_price)

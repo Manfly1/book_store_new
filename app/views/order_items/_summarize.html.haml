@@ -1,0 +1,31 @@
+.general-order-wrap
+  .row
+    .col-sm-4
+      .input-group.general-input-group
+        %label.input-label= t('coupons.enter_coupon')
+        = form_for :coupon, url: order_path(current_order), method: :put do |f|
+          = f.text_field :code, placeholder: t('coupons.enter_coupon'), class: 'form-control mb-30'
+          %div
+            = f.submit t('coupons.apply'), class: 'btn btn-primary mr-5 mb-15', id: 'apply-coupon'
+
+    .col-sm-8
+      .res-mr-200.text-center.general-text-right
+        %p.in-gold-500.font-18= t('order.summary')
+        %table.general-summary-table.general-summary-table-right.general-text-right
+          %tr
+            %td
+              %p.font-16= t('order.subtotal')
+            %td
+              %p.font-16#subTotal= number_to_currency(current_order.sub_price)
+          %tr
+            %td
+              %p.font-16= t('order.coupon')
+            %td
+              %p.font-16#coupon= number_to_currency(current_order.discount)
+          %tr
+            %td
+              %strong.font-18= t('order.total')
+            %td
+              %strong.font-18#orderTotal= number_to_currency(current_order.total_price)
+        = button_to t('order.checkout'), checkout_path(:address), method: :get, class: 'btn btn-default mb-20 visible-xs-inline-block'
+= button_to t('order.checkout'), checkout_path(:address), method: :get, class: 'btn btn-default mb-20 hidden-xs center-block'

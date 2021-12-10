@@ -1,0 +1,50 @@
+= content_for(:title, t('order.cart') + ' | ')
+%main.container.general-main-wrap
+  %h1.general-title-margin= t('order.cart')
+  = render partial: 'index_mobile'
+
+  .hidden-xs
+    %table.table.table-hover
+      %tr.no-hover
+        %th.col-pic.pl-0
+          %span.in-grey-600= t('order.product')
+        %th.col-title
+        %th.col-price
+          %span.in-grey-600= t('order.price')
+        %th.col-quantity
+          %span.in-grey-600= t('order.quantity')
+        %th.col-total
+          %span.in-grey-600= t('order.subtotal')
+        %th.col-close
+      - @order_items.each do |order_item|
+        %tr{ id: "order-item-#{order_item.id}"}
+          %td
+            .general-img-wrap-table
+              - if order_item.book.images.any?
+                = image_tag(order_item.book.decorate.cover, class: 'cart-img-shadow pull-left')
+              - else
+                = image_tag('no_cover.jpg', class: 'img-shadow general-thumbnail-img')
+
+          %td
+            %p.title
+              = link_to order_item.book.title, order_item.book
+
+          %td
+            %span.font-16.in-gold-500{ id: 'book_price' + order_item.id.to_s }= number_to_currency(order_item.book.price)
+
+          %td
+            .input-group
+              = link_to order_order_item_path(current_order, order_item, quantity_action: :minus), remote: true, method: :put, class: 'input-link' do
+                %i.fa.fa-minus.line-height-40{ onclick: "decrementOrderItemQuantity(#{order_item.id}, #{order_item.book.price}, #{current_order.discount(order_item.book.price)})"}
+              %input.form-control.quantity-input.order_item_quantity{value: order_item.quantity, type: "number", id: 'quantity_input' + order_item.id.to_s, onkeyup: "changeInput(#{order_item.id}, #{order_item.book.price}, #{current_order.discount(order_item.book.price)}, #{order_item.quantity})" }
+              = link_to order_order_item_path(current_order, order_item, quantity_action: :plus), remote: true, method: :put, class: 'input-link' do
+                %i.fa.fa-plus.line-height-40{ onclick: "incrementOrderItemQuantity(#{order_item.id}, #{order_item.book.price}, #{current_order.discount(order_item.book.price)})"}
+
+          %td
+            %span.font-16.in-gold-500{ id: 'subPrice' + order_item.id.to_s }= number_to_currency(order_item.price)
+
+          %td
+            = button_to order_order_item_path(current_order, order_item), method: :delete, class: 'close general-cart-close' do
+              %span{'aria-hidden': "true" } &times;
+
+  = render partial: 'summarize'

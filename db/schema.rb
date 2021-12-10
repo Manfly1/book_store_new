@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_17_122149) do
+ActiveRecord::Schema.define(version: 2021_11_30_125245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 2021_11_17_122149) do
     t.string "materials"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "reviews_id"
+    t.index ["reviews_id"], name: "index_books_on_reviews_id"
   end
 
   create_table "books_categories", force: :cascade do |t|
@@ -104,6 +106,59 @@ ActiveRecord::Schema.define(version: 2021_11_17_122149) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string "code"
+    t.bigint "order_id"
+    t.decimal "discount", precision: 10, scale: 2
+    t.boolean "active", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_coupons_on_order_id"
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.decimal "price", precision: 10, scale: 2, default: "0.0"
+    t.string "method"
+    t.string "days"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity", default: 1
+    t.bigint "order_id"
+    t.bigint "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_order_items_on_book_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "total_price", precision: 10, scale: 2, default: "0.0"
+    t.datetime "completed_at"
+    t.integer "status", default: 0
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "delivery_id"
+    t.boolean "use_billing", default: false
+    t.index ["delivery_id"], name: "index_orders_on_delivery_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "body"
+    t.integer "status", default: 0
+    t.bigint "user_id"
+    t.bigint "book_id"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "shippings", force: :cascade do |t|
@@ -135,16 +190,27 @@ ActiveRecord::Schema.define(version: 2021_11_17_122149) do
     t.string "provider"
     t.string "uid"
     t.string "name"
+    t.bigint "reviews_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["reviews_id"], name: "index_users_on_reviews_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "authors_books", "authors"
   add_foreign_key "authors_books", "books"
   add_foreign_key "billings", "users"
+  add_foreign_key "books", "reviews", column: "reviews_id"
   add_foreign_key "books_categories", "books"
   add_foreign_key "books_categories", "categories"
+  add_foreign_key "coupons", "orders"
+  add_foreign_key "order_items", "books"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "deliveries"
+  add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "users"
   add_foreign_key "shippings", "users"
+  add_foreign_key "users", "reviews", column: "reviews_id"
 end
