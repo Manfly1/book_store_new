@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 SimpleForm.setup do |config|
   config.wrappers :default, tag: 'div', class: 'form-group mb-30', error_class: 'has-error' do |b|
     b.use :html5

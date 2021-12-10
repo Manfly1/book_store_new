@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OrdersQuery
   attr_reader :status, :user
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  context 'when validation' do
+  context 'validation' do
     it 'is invalid without title' do
       expect(build(:book, title: nil)).not_to be_valid
     end
@@ -29,7 +29,7 @@ RSpec.describe Book, type: :model do
     end
   end
 
-  context 'when associations' do
+  context 'associations' do
     let(:book) { create :book }
 
     it 'has many authors' do

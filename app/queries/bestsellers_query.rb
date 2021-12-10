@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class BestsellersQuery
   def self.call
     sql = %[SELECT DISTINCT ON (bc.category_id) b.*, SUM(oi.quantity) as total_quantity

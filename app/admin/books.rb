@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 ActiveAdmin.register Book do
   permit_params :title, :description, :dimensions, :materials,
                 :materials, :price, :year, category_ids: [], author_ids: [], images: []

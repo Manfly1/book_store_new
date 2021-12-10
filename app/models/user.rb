@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   has_one :billing, dependent: :destroy
   has_one :shipping, dependent: :destroy

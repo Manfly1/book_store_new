@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Shipping < ApplicationRecord
   belongs_to :user
 

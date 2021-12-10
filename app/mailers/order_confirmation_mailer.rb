@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OrderConfirmationMailer < ApplicationMailer
   def order_confirmation
     @user_name = params[:user].decorate.name

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Billing < ApplicationRecord
   belongs_to :user
 

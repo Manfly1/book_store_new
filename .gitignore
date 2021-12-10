@@ -23,6 +23,7 @@
 
 # Ignore uploaded files in development.
 /storage/*
+/coverage/*
 !/storage/.keep
 
 /public/assets

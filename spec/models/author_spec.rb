@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Author, type: :model do
-  context 'when validation' do
+  context 'validation' do
     it 'is invalid without first_name' do
       expect(build(:author, first_name: nil)).not_to be_valid
     end
@@ -11,7 +11,7 @@ RSpec.describe Author, type: :model do
     end
   end
 
-  context 'when associations' do
+  context 'associations' do
     it 'has many books' do
       author = create :author
       expect(author).to respond_to :books

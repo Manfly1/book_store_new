@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 ActiveAdmin.register Review do
   permit_params :body, :status
 

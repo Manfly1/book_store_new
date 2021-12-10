@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UpdateTotalPrice
   attr_reader :order, :price, :quantity, :action, :delivery, :coupon
 

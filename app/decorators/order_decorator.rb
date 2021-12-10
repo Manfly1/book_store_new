@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OrderDecorator < ApplicationDecorator
   delegate_all
 

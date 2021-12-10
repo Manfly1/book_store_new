@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CheckoutService
   attr_reader :step, :order, :user
 

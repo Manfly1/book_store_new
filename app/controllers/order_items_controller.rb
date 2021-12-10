@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OrderItemsController < ApplicationController
   def index
     @order_items = current_order.order_items.order('created_at DESC')

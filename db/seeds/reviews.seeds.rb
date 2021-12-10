@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 start_time = 0
 
 after :users, :books do

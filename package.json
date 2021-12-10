@@ -1,5 +1,5 @@
 {
-  "name": "book-store-new",
+  "name": "book-store",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

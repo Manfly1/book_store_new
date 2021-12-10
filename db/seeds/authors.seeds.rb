@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 start_time = Time.now
 
 Author.destroy_all

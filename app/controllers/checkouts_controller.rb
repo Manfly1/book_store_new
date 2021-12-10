@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CheckoutsController < ApplicationController
   include Wicked::Wizard
   include CheckoutUpdate

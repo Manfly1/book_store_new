@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UpdateOrderItem
   include Interactor
 
@@ -36,9 +34,7 @@ class UpdateOrderItem
     order_item.update(quantity: quantity)
 
     difference = quantity - previous_quantity
-    if difference.positive?
-      return UpdateTotalPrice.call(context.order, price: order_item.book.price, action: :plus, quantity: difference.abs)
-    end
+    return UpdateTotalPrice.call(context.order, price: order_item.book.price, action: :plus, quantity: difference.abs) if difference.positive?
 
     UpdateTotalPrice.call(context.order, price: order_item.book.price, action: :minus, quantity: difference.abs)
   end

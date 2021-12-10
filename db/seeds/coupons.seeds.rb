@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Coupon.destroy_all
 
 start_time = Time.now
