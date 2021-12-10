@@ -1,0 +1,37 @@
+= content_for(:title, t('order.checkout'))
+%main.container.general-main-wrap
+  %h1.general-title-margin= t('order.checkout')
+  = render 'progress_bar'
+
+  .row.mb-20
+
+    .col-sm-3
+      = render 'address_info', address: current_user.billing, address_title: t('settings.billing')
+    .col-sm-3
+      = render 'address_info', address: current_user.shipping, address_title: t('settings.shipping')
+
+    .col-sm-3
+      %h3.general-subtitle= t('checkout.delivery.delivery')
+      %p.general-address
+        = current_order.delivery.method
+        = link_to t('checkout.edit'), checkout_path(:delivery), class: 'general-edit'
+        %br
+        = current_order.delivery.days
+        %br
+        = number_to_currency(current_order.delivery.price)
+
+    .col-sm-3
+      %h3.general-subtitle= t('checkout.payment.payment')
+      %p.general-address
+        = current_user.credit_card.number
+        = link_to t('checkout.edit'), checkout_path(:payment), class: 'general-edit'
+        %br
+        = current_user.credit_card.expiration_date
+
+  = render 'order_items'
+
+  .text-center.general-text-right
+    = render 'order_summary'
+
+  .text-center
+    = button_to t('checkout.place'), wizard_path, method: :put, class: 'btn btn-default mb-20 center-block'

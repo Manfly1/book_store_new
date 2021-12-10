@@ -1,0 +1,31 @@
+.hidden-xs.divider-lg.pt-20
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          %span.in-grey-600= t('order.product')
+        %th.col-method
+        %th
+          %span.in-grey-600= t('order.price')
+        %th
+          %span.in-grey-600= t('order.quantity')
+        %th
+          %span.in-grey-600= t('order.subtotal')
+    %tbody
+      - current_order.order_items.each do |order_item|
+        %tr
+          %td
+            .general-img-wrap-table
+              - if order_item.book.images.any?
+                = image_tag(order_item.book.decorate.cover, class: 'cart-img-shadow pull-left')
+              - else
+                = image_tag('no_cover.jpg', class: 'img-shadow general-thumbnail-img')
+          %td
+            %p.title= order_item.book.title
+            %p.in-grey-600.fw-300= order_item.book.description
+          %td
+            %span.font-16.in-gold-500= number_to_currency(order_item.book.price)
+          %td
+            %span.ml-30= order_item.quantity
+          %td
+            %span.font-16.in-gold-500= number_to_currency(order_item.price)

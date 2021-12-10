@@ -1,0 +1,35 @@
+= content_for(:title, t('order.checkout'))
+%main.container
+  %h1.general-title-margin= t('order.checkout')
+  = render 'progress_bar'
+
+  = simple_form_for current_order, url: wizard_path, method: :put do |f|
+    .hidden-xs.mb-res-50
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.col-method
+              %span.in-grey-600.ml-40= t('checkout.delivery.method')
+            %th
+              %span.in-grey-600= t('checkout.delivery.days')
+            %th
+              %span.in-grey-600= t('checkout.delivery.price')
+        %tbody.deliveries
+          - @deliveries.each do |delivery|
+            %tr
+              %td
+                .form-group.radio.mt-0.mb-0
+                  %label.radio-label{ onclick: "delivery(#{current_order.total_price}, #{delivery.price}, #{current_order.delivery&.price});" }
+                    = f.radio_button :delivery_id, delivery.id, class: 'radio-input', hidden: true
+                    %span.radio-icon
+                    %span.radio-text= delivery.method
+              %td
+                %span= delivery.days
+              %td
+                %span.font-16.in-gold-500.delivery_price= number_to_currency(delivery.price)
+
+      .general-text-align
+        = render 'order_summary'
+
+    .text-center
+      = f.submit t('checkout.save'), class: 'btn btn-default mb-20', id: "continue"

@@ -1,0 +1,34 @@
+= content_for(:title, t('order.checkout'))
+%main.container
+  %h1.general-title-margin= t('order.checkout')
+  = render 'progress_bar'
+
+  .res-mb-100
+    .hidden-xs.hidden-sm
+      .row
+        .col-md-5
+          %h3.general-subtitle= t('settings.billing')
+          %p.general-info-text= t('checkout.address.all_fields_required')
+        .col-md-5.col-md-offset-1
+          %h3.general-subtitle= t('settings.shipping')
+
+    = simple_form_for(current_user, url: wizard_path, method: :put) do |form|
+      .row
+        .col-md-5.mb-40
+          = render 'address_form', address: :billing, builder: @billing_builder, form: form
+        .col-md-5.col-md-offset-1.mb-60
+          #shipping
+            = render 'address_form', address: :shipping, builder: @shipping_builder, form: form
+
+          .form-group.checkbox#use_billing
+            %label.checkbox-label
+              = form.simple_fields_for :orders, current_order do |order_field|
+                = order_field.check_box :use_billing, { class: 'checkbox-input', hidden: true }, 'true', 'false'
+              %span.checkbox-icon
+                %i.fa.fa-check
+              %span.checkbox-text= t('checkout.address.use_billing')
+
+      = render 'order_summary'
+
+      .text-center
+        = form.submit t('checkout.save'), class: 'btn btn-default mb-20', id: "continue"

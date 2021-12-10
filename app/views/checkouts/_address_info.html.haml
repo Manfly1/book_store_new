@@ -1,0 +1,13 @@
+%h3.general-subtitle= address_title
+%p.general-address
+  = address.decorate.full_name
+  - if step == :confirm
+    = link_to t('checkout.edit'), checkout_path(:address), class: 'general-edit'
+  %br
+  = address.address
+  %br
+  = address.city
+  %br
+  = address.country
+  %br
+  = address.phone

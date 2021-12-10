@@ -1,0 +1,17 @@
+%ul.steps.list-inline
+  - wizard_steps.each_with_index do |ws, index|
+    - if ws == step
+      %li.step.active
+        %span.step-number= index + 1
+        %span.step-text.hidden-xs= t("checkout.titles.#{ws}")
+    - elsif past_step?(ws)
+      %li.step.done
+        %span.step-number
+          %i.fa.fa-check.step-icon
+        %span.step-text.hidden-xs= t("checkout.titles.#{ws}")
+    - else
+      %li.step
+        %span.step-number= index + 1
+        %span.step-text.hidden-xs= t("checkout.titles.#{ws}")
+    - if index + 1 < wizard_steps.size
+      %li.step-divider

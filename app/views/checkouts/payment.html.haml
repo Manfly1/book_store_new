@@ -1,0 +1,27 @@
+= content_for(:title, t('order.checkout'))
+%main.container.mb-res-50
+  %h1.general-title-margin= t('order.checkout')
+  = render 'progress_bar'
+
+  %h3.general-subtitle= t('checkout.payment.card')
+  .max-600.mb-80
+    = simple_form_for @credit_card, url: wizard_path, wrapper: :credit_card, method: :put do |f|
+      = f.input :number, placeholder: t('checkout.payment.number'), label: t('checkout.payment.number'), input_html: { 'data-mask': Constants::CARD_NUMBER_MASK }
+      .row
+        .col-sm-6
+          = f.input :card_name, placeholder: t('checkout.payment.card_name'), label: t('checkout.payment.card_name')
+
+        .col-sm-3
+          = f.input :expiration_date, placeholder: Constants::CARD_DATE_MASK, label: t('checkout.payment.date'), input_html: { 'data-mask': Constants::CARD_DATE_MASK }
+
+        .col-sm-3
+          .form-group.relative
+            = f.input :cvv, placeholder: t('checkout.payment.cvv'), label: t('checkout.payment.cvv'), input_html: { 'data-mask': Constants::CARD_CVV_MASK }, as: :password
+            %i.fa.fa-question-circle.general-form-help.cvv-hint
+              %span.cvv-text= t('checkout.payment.hint')
+
+      .general-text-align
+        = render 'order_summary'
+
+      .text-center
+        = f.submit t('checkout.save'), class: 'btn btn-default mb-20'

@@ -1,0 +1,22 @@
+%p.in-gold-500.font-18.general-text-right= t('order.summary')
+%table.general-summary-table.general-summary-table-right.general-text-right
+  %tr
+    %td
+      %p.font-16= t('order.subtotal')
+    %td
+      %p.font-16= number_to_currency(current_order.sub_price)
+  %tr
+    %td
+      %p.font-16= t('order.coupon')
+    %td
+      %p.font-16= number_to_currency(current_order.discount)
+  %tr
+    %td
+      %p.font-16= t('order.delivery')
+    %td
+      %p.font-16#delivery= number_to_currency(current_order.delivery_price)
+  %tr
+    %td
+      %strong.font-18= t('order.total')
+    %td
+      %strong.font-18#order_total= number_to_currency(current_order.total_price)
