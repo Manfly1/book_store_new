@@ -1,0 +1,24 @@
+= content_for(:title, t('auth.restore_password') + ' | ')
+= render 'devise/shared/error_messages'
+%main.container.general-main-wrap.mt-100
+  .text-center
+    %h1.mb-30= t('auth.forgot_password')
+    %p.general-password-text= t('auth.we_send_it')
+
+  .general-form
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = render 'devise/shared/error_messages', resource: resource
+
+      .form-group.mb-25
+        = f.label :user_email, t('auth.enter_email'), class: 'control-label input-label'
+        = f.email_field(:email,
+                        autofocus: true,
+                        autocomplete: 'email',
+                        class: 'form-control',
+                        required: true,
+                        placeholder: t('auth.enter_email'))
+
+      = f.submit t('auth.send_instructions'), class: 'btn btn-default mb-20 center-block'
+
+      .text-center
+        = link_to t('auth.cancel'), new_user_session_path, class: 'in-gold-500 mb-2'

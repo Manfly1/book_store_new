@@ -11,6 +11,6 @@ class BestsellersQuery
       GROUP BY bc.category_id, b.id
       ORDER BY bc.category_id, total_quantity DESC]
 
-    Book.find_by_sql(sql)
+    
   end
 end
