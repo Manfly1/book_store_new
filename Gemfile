@@ -15,7 +15,6 @@ gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'country_select', '~> 4.0'
 gem 'devise'
-gem "rails_12factor", group: :production
 gem 'draper', '~> 3.1'
 gem 'ffaker', '~> 2.11'
 gem 'font-awesome-rails', '~> 4.7.0.5'
@@ -35,6 +34,7 @@ gem 'paperclip', '~> 6.1'
 gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'rails_12factor', group: :production
 gem 'rails-ujs', '~> 0.1.0'
 gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'sass-rails', '>= 6'
@@ -74,4 +74,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'rails_12factor' 
