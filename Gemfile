@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '3.0.0'
 
 gem 'aasm', '~> 5.0', '>= 5.0.5'
 gem 'activeadmin', '~> 2.1'
@@ -34,6 +34,7 @@ gem 'paperclip', '~> 6.1'
 gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'rails_12factor', group: :production
 gem 'rails-ujs', '~> 0.1.0'
 gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'sass-rails', '>= 6'

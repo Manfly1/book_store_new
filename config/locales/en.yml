@@ -1,33 +1,181 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  sorting:
+    "created_at DESC": 'Newest first'
+    "price ASC": 'Price: low to high'
+    "price DESC": 'Price: high to low'
+    "title ASC": 'Title: A-Z'
+    "title DESC": 'Title: Z-A'
+    "popular": 'Popular first'
+
+  default:
+    homepage: "Home"
+    shop: "Shop"
+    orders: "Orders"
+    settings: "Settings"
+    bookstore: "Bookstore"
+    logout: "Log Out"
+    login: "Sign In"
+    register: "Sign Up"
+    contact_us_email: "bookstore@shop.com"
+    contact_us_phone: "8 (800) 555-35-35"
+    facebook_link: 'https://www.facebook.com/groups/railsrocks/'
+    twitter_link: 'https://twitter.com/elonmusk'
+    google_link: 'https://www.google.com/'
+    instagram_link: 'https://www.instagram.com/instagram/'
+  
+  home:
+    best_sellers: "Best Sellers"
+    buy_now: "Buy Now"
+    previous: "Previous"
+    next: "Next"
+    greeting: "Welcome to our amazing Bookstore!"
+    greeting_description: "We pore through hundreds of new books each month and select the five best we can find to share with our members."
+    get_started: 'Get started'
+  
+  shop:
+    catalog: "Catalog"
+    filter_by: "Filter by category"
+    sort_by: "Sort by"
+    more: 'View More'
+    all: "All"
+
+  book:
+    back_to: "Back to results"
+    more: "Read More"
+    less: 'Read Less'
+    description: "Description"    
+    reviews: "Reviews (%{count})"    
+    write_review: "Write a Review"
+    score: "Score"
+    title: "Title"
+    review: "Review"
+    post: "Post"    
+    add_to_cart: "Add to Cart"
+    out_of_stock: "Out of stock"
+    login_first: "Login first"
+    year: "Year of publication"
+    category: "Category"
+    dimensions: "Dimensions"
+    materials: "Materials"
+
+  auth:
+    enter_email: 'Enter Email'
+    password: 'Password'
+    forgot_password: 'Forgot your password?'
+    confirm_password: 'Confirm Password'
+    restore_password: 'Restore password'
+    set_new_password: 'Set new password'
+    type_new_password: 'Type a new Password'
+    remember: 'Remember me'
+    or: 'or'
+    have_account: 'Have an account?'
+    we_send_it: "We'll email you instructions on how to reset it"
+    send_instructions: 'Send instructions'
+    cancel: 'Cancel'
+    change: 'Change'
+
+  settings:
+    settings: 'Settings'
+    address: 'Address'
+    privacy: 'Privacy'
+    billing: 'Billing Address'
+    shipping: 'Shipping Address'
+    please_enter: 'Please enter your %{data}'
+    first_name: 'First Name'
+    last_name: 'Last Name'
+    city: 'City'
+    zip: 'Zip'
+    country: 'Country'
+    phone: 'Phone'
+    phone_placeholder: '123 456-7890'
+    save: 'Save'
+    email: 'Email'
+    old_password: 'Old Password'
+    remove_account: 'Remove Account'
+    please_remove: 'Please Remove My Account'
+    understand: 'I understand that all data will be lost'
+    phone_example: 'Example: +88005553535'
+    billing_updated: 'Billing was updated.'
+    shipping_updated: 'Shipping was updated.'
+    address_updated: 'Address was updated'
+    account_updated: 'Account was updated'
+    errors: "You've entered invalid data"
+
+  review:
+    created: 'Thanks. Review has been sent to moderator. Wait for approvement'
+    approved: 'Approved'
+    rejected: 'Rejected'
+    unprocessed: 'Unprocessed'
+
+  admin:
+    approve: 'Approve'
+    reject: 'Reject'
+
+  coupons:
+    enter_coupon: 'Enter Your Coupon Code'
+    apply: 'Apply Coupon'
+    attached: 'Coupon attached!'
+    invalid: "You've entered invalid coupon code"
+
+  order:
+    added: 'Book added to cart'
+    wrong: 'Oops! Something went wrong'
+    deleted: 'Book deleted from cart'
+    summary: 'Order Summary'
+    subtotal: 'Subtotal:'
+    coupon: 'Coupon:'
+    total: 'Order Total:'
+    checkout: 'Checkout'
+    cart: 'Cart'
+    product: 'Product'
+    price: 'Price'
+    quantity: 'Quantity'
+    no_items: 'You have no items in your cart'
+    statuses:
+      all: 'All'
+      in_delivery: 'In delivery'
+      delivered: 'Delivered'
+      canceled: 'Canceled'
+    number: 'Number'
+    completed_at: 'Completed at'
+    status: 'Status'
+    my_orders: 'My Orders'
+    delivery: 'Delivery:'
+
+  checkout:
+    titles:
+      address: 'Address'
+      delivery: 'Delivery'
+      payment: 'Payment'
+      confirm: 'Confirm'
+      complete: 'Complete'
+    address:
+      all_fields_required: 'all fields are required'
+      use_billing: 'Use Billing Adress'
+    delivery:
+      delivery: 'Delivery'
+      method: 'Method'
+      days: 'Days'
+      price: 'Price'
+    payment:
+      payment: 'Payment'
+      card: 'Credit Card'
+      number: 'Card Number'
+      card_name: 'Name on Card'
+      date: 'MM/YY'
+      cvv: 'CVV'
+      hint: ' 3-digit security code, usually found on the back of your card.'
+    confirm: 'Confirm'
+    complete: 'Complete'
+    save: 'Save and Continue'
+    place: 'Place Order'
+    thanks: 'Thank You for your Order!'
+    confirmation: "An order confirmation has been has been sent to %{email}"
+    back_to_store: 'Back to Store'
+    edit: 'edit'
+
+  mail:
+    hi: "Hi %{user_name}!"
+    completed: 'Your order successfully completed.'
+    thanks: 'Thanks for choosing us!'
+
