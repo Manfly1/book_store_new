@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Home', type: :feature, js: true do
   before do
-    create_list(:category, 1)
-    create_list(:book, 2)
+    create(:category)
+    create(:book)
 
     visit(root_path)
   end
