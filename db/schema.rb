@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_11_10_105242) do
 
 ActiveRecord::Schema.define(version: 20_211_110_080_612) do
@@ -64,7 +65,6 @@ ActiveRecord::Schema.define(version: 20_211_110_080_612) do
     t.datetime 'updated_at', precision: 6, null: false
   end
 
-
   create_table "books_categories", force: :cascade do |t|
     t.bigint "book_id"
     t.bigint "category_id"
@@ -95,5 +95,4 @@ ActiveRecord::Schema.define(version: 20_211_110_080_612) do
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'authors_books', 'authors'
   add_foreign_key 'authors_books', 'books'
-
 end
