@@ -1,5 +1,5 @@
 module Constants
-  BOOKS_PER_PAGE = 8
+  BOOKS_PER_PAGE = 12
   DESCRIPTION_LIMIT = 100
   LATEST_BOOK_COUNT = 3
   DEFAULT_BOOKS_ORDER = 'created_at DESC'.freeze
