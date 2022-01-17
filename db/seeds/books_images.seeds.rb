@@ -7,7 +7,7 @@ after :books do
     rand(3..4).times do
       book.images.attach(
         io: open("app/assets/images/#{rand(1..24)}.jpg"),
-        filename: 'cover.jpg',
+        filename: 'no_cover.jpg',
         content_type: 'image/jpg'
       )
     end
