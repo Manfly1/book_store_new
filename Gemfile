@@ -5,7 +5,7 @@ ruby '2.7.0'
 
 gem 'aasm', '~> 5.0', '>= 5.0.5'
 gem 'activeadmin', '~> 2.1'
-gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
+gem "aws-sdk-s3", require: false
 gem 'bootsnap'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'cancancan', '~> 3.0', '>= 3.0.1'
@@ -31,6 +31,7 @@ gem 'omniauth-facebook', '~> 5.0'
 gem 'open_uri_redirections', '~> 0.2.1'
 gem 'paperclip', '~> 6.1'
 gem 'pg'
+gem 'dotenv-rails'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'rails_12factor', group: :production

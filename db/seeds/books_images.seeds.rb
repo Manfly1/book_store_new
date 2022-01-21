@@ -6,9 +6,10 @@ after :books do
   Book.all.each do |book|
     rand(3..4).times do
       book.images.attach(
-        io: open("app/assets/images/#{rand(1..24)}.jpg"),
-        filename: 'no_cover.jpg',
-        content_type: 'image/jpg'
+        io: URI.open("https://book-store-new-manfly.s3.eu-west-2.amazonaws.com/#{rand(1..24)}.jpg"),
+        filename: 'cover.jpg',
+        content_type: 'image/jpg',
+        identify: false
       )
     end
   end
