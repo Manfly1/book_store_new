@@ -8,7 +8,7 @@ class BooksController < ApplicationController
     @categories = Category.select(:id, :name)
     @order_param = params[:sort_by] || Constants::DEFAULT_BOOKS_ORDER
 
-    result = DefaultBooksQuery.call(category: params[:category], sort_param: params[:sort_by]).page(params[:page]).per(Constants::BOOKS_PER_PAGE)
+    result = BooksQuery.call(category: params[:category], sort_param: params[:sort_by]).page(params[:page]).per(Constants::BOOKS_PER_PAGE)
     @books = BookDecorator.decorate_collection(result)
   end
 

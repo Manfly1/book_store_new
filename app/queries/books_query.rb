@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DefaultBooksQuery
+class BooksQuery
   def initialize(**params)
     @params = params
   end
