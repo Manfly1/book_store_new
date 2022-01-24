@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe DefaultBooksQuery do
+RSpec.describe BooksQuery do
   let(:result) { described_class.call(params) }
   let(:params) { {} }
   let(:first_book) { create(:book) }
